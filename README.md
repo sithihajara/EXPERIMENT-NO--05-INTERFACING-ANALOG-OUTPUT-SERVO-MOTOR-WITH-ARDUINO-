@@ -47,12 +47,13 @@ An external controller (such as the Arduino) tells the servo where to go with a 
 
 
 
-CIRCUIT DIAGRAM
- 
- 
- ![image](https://user-images.githubusercontent.com/36288975/163544618-6eb8a7b5-7f1a-428a-8d9f-fd899b145efb.png)
+### CIRCUIT DIAGRAM
+### ON SETUP:
+![194003389-14306ee8-3a5a-40ac-9ec7-f76572540e57](https://user-images.githubusercontent.com/94219582/196181819-88de0ca0-7428-4b78-af0a-caebdf7d57ac.png)
 
-### FIGURE 04 CIRCUIT DIAGRAM
+### OFF SETUP:
+![194003322-ddae075f-4144-458b-a003-847d7fab32b6](https://user-images.githubusercontent.com/94219582/196181842-5bab3e53-19f4-462d-b40e-af608ad4a00d.png)
+
 
 ### PROCEDURE:
 1.	Connect the circuit as per the circuit diagram 
@@ -67,6 +68,11 @@ CIRCUIT DIAGRAM
 
 
 ### PROGRAM :
+```
+Developed by: Sithi Hajara I
+Register Number:212221230102
+```
+
 ## SERIAL MONITOR:
 ```
 // C++ code
@@ -103,13 +109,44 @@ void loop()
   Serial.println(pos);
 }
 ```
-## OUTPUT :
-
-
-OUTPUT :
+### OUTPUT :
 ![194003811-1c0bf1bc-f2e7-4eb3-9369-58c81a00785a](https://user-images.githubusercontent.com/94219582/196180942-d04990e2-540a-4426-ab3b-2b241731eccf.png)
+## TOGGLE GRAPH:
+```
+// C++ code
+#include <Servo.h>
+int pos = 0;
 
-OUTPUT :
+Servo servo_11;
+
+void setup()
+{
+  servo_11.attach(11,500,2500);
+  Serial.begin(9600);
+}
+
+void loop()
+{
+  for (pos = 0;pos<=180;pos+=1)
+  {
+    servo_11.write(pos);
+    delay(5);
+    //Serial.print("angle of servo= ");
+  Serial.println(pos);
+  }
+  for (pos = 180;pos>=0;pos-=1)
+  {
+    servo_11.write(pos);
+    delay(10);
+    //Serial.print("angle of servo= ");
+  Serial.println(pos);
+  }
+  delay(100);
+  Serial.print("angle of servo= ");
+  Serial.println(pos);
+}
+```
+### OUTPUT :
 ![194003864-c2626182-dc6a-48b2-ae96-ccff54992690](https://user-images.githubusercontent.com/94219582/196180970-02c10699-7e82-48b5-8c45-161648e34b0f.png)
 
 ### RESULTS: 
